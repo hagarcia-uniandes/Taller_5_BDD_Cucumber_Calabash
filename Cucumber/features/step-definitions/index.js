@@ -21,6 +21,12 @@ defineSupportCode(({Given, When, Then}) => {
 		var alertText = browser.$('.aviso.alert.alert-danger').getText();
 		expect(alertText).to.include(error);
 	});
+	
+	Then('I expect to have an account button', () => {
+		browser.waitForVisible("#cuenta", 5000);
+		var buttonCta = browser.element('#cuenta');
+		expect(buttonCta).to.exist;
+	});
 });
 
 Given('I go to losestudiantes home screen', () => {
