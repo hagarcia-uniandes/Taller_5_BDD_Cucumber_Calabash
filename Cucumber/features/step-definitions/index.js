@@ -1,7 +1,27 @@
+var {defineSupportCode} = require('cucumber');
 var {Given} = require('cucumber');
 var {When} = require('cucumber');
 var {Then} = require('cucumber');
 var {expect} = require('chai');
+
+defineSupportCode(({Given, When, Then}) => {
+	When(/^I fill with (.*) and (.*)$/ , (email, password) => {
+		var cajaLogIn = $('.cajaLogIn');
+		var mailInput = cajaLogIn.$('input[name="correo"]');
+		mailInput.click();
+		mailInput.keys(email);
+		
+		var passwordInput = cajaLogIn.$('input[name="password"]');
+		passwordInput.click();
+		passwordInput.keys(password)
+	});
+	
+	Then('I expect to see {string}', error => {
+		$('.aviso.alert.alert-danger').waitForDisplayed(5000);
+		var alertText = browser.$('.aviso.alert.alert-danger').getText();
+		expect(alertText).to.include(error);
+	});
+});
 
 Given('I go to losestudiantes home screen', () => {
   browser.url('/');
