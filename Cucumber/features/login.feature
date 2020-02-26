@@ -14,14 +14,10 @@ Scenario Outline: Login failed with wrong inputs
       |                  |          | "Ingresa una contraseña"   |
       | miso@gmail.com   |    1234  | "Upss! El correo y"      |
 
-Scenario Outline: Login succesfull
+Scenario: Login succesfull
 
   Given I go to losestudiantes home screen
     When I open the login screen
-    And I fill with <email> and <password>
+    And I fill with ha.garcia@uniandes.edu.co and 12345678
     And I try to login
     Then I expect to have an account button
-
-    Examples:
-      | email                    | password |
-      | holmangarcia@gmail.com   | 12345678 |
