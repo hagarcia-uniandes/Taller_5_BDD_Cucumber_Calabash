@@ -14,7 +14,7 @@ Scenario Outline: Login failed with wrong inputs
       |                  |          | "Ingresa una contraseña"   |
       | miso@gmail.com   |    1234  | "Upss! El correo y"      |
 
-Scenario: Login succesfull
+Scenario Outline: Login succesfull
 
   Given I go to losestudiantes home screen
     When I open the login screen
