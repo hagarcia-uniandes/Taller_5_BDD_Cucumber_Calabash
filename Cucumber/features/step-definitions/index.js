@@ -55,7 +55,7 @@ defineSupportCode(({Given, When, Then}) => {
 	});
 	
 	Then('I expect to have an account button', () => {
-		$("#cuenta").waitForDisplayed(5000);
+		browser.waitForVisible("#cuenta", 5000);
 		var buttonCta = browser.element('#cuenta');
 		expect(buttonCta).to.exist;
 	});
