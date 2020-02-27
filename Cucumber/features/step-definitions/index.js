@@ -1,7 +1,4 @@
 var {defineSupportCode} = require('cucumber');
-var {Given} = require('cucumber');
-var {When} = require('cucumber');
-var {Then} = require('cucumber');
 var {expect} = require('chai');
 
 defineSupportCode(({Given, When, Then}) => {
