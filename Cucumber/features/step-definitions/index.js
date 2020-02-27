@@ -55,8 +55,8 @@ defineSupportCode(({Given, When, Then}) => {
 	});
 	
 	Then('I expect to be logged in', () => {
-		var header = browser.element('.navbar');
-		var alertText = header.element('.usrImage'); 
+		var header = browser.$('.navbar');
+		var alertText = header.$('.usrImage'); 
 		expect(alertText).to.not.be.null;
 	});
 	
