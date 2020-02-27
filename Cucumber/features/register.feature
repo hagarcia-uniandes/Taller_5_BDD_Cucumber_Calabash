@@ -7,10 +7,10 @@ Scenario Outline: Register new account
     When I open the login screen
     And I fill with my <name>, <lastname>, <email>, selected a <department>, fill my <password> and accept the <terms> and conditions
     And I try to register
-    Then I expect do not see the errors : <error_email>, <error_password> and <error_terms>
+    Then I expect do not see the errors : <error_email>, <error_pass> and <error_terms>
 
     Examples:
-      | name            | lastname  | email                        | department | password      | terms  | error_email                | error_pass                                        | error_terminos                            |
+      | name            | lastname  | email                        | department | password      | terms  | error_email                | error_pass                                        | error_terms                               |
       |                 |           |                              |            |               |        | "Ingresa un correo"        | "Ingresa una contraseña"                          | "Debe aceptar los términos y condiciones" |
       | Titarufo        | Hernandez | wrongemail                   |            |               |        | "Ingresa un correo valido" | "Ingresa una contraseña"                          | "Debe aceptar los términos y condiciones" |
       | Titarufo        | Hernandez | t.hernandez@uniandes.edu.co  |            |               |        |                            | "Ingresa una contraseña"                          | "Debe aceptar los términos y condiciones" |
