@@ -62,15 +62,15 @@ defineSupportCode(({Given, When, Then}) => {
 	
 	When(/^I fill with my (.*), (.*), (.*), selected a (.*), fill my (.*) and accept the (.*) and conditions$/, 
         (name, lastname, email, department, password, terms) => {
-            var cajaSignUp = browser.element('.cajaSignUp');
-            cajaSignUp.element('input[name="nombre"]').click().keys(name);
-            cajaSignUp.element('input[name="apellido"]').click().keys(lastname);
-            cajaSignUp.element('input[name="correo"]').click().keys(email);
-            cajaSignUp.element('input[name="password"]').click().keys(password);
+            var cajaSignUp = browser.$('.cajaSignUp');
+            cajaSignUp.$('input[name="nombre"]').click().keys(name);
+            cajaSignUp.$('input[name="apellido"]').click().keys(lastname);
+            cajaSignUp.$('input[name="correo"]').click().keys(email);
+            cajaSignUp.$('input[name="password"]').click().keys(password);
             if(department !== "")
-                cajaSignUp.element('select[name="idDepartamento"]').selectByValue('3');
+                cajaSignUp.$('select[name="idDepartamento"]').selectByValue('3');
             if(terms !== "")
-                cajaSignUp.element('input[name="acepta"]').click();
+                cajaSignUp.$('input[name="acepta"]').click();
     });
 
     When('I try to register', () => {
