@@ -74,15 +74,15 @@ defineSupportCode(({Given, When, Then}) => {
     });
 
     When('I try to register', () => {
-        var cajaSignUp = browser.element('.cajaSignUp');
-        cajaSignUp.element('button=Registrarse').click();
+        var cajaSignUp = browser.$('.cajaSignUp');
+        cajaSignUp.$('button=Registrarse').click();
     });
 
     Then(/^I expect do not see the errors : (.*), (.*) and (.*)$/, 
         (error_email, error_password, error_terms) => {
             if(error_email !== "" && error_password !== "" && error_terms !== "") {
-                browser.waitForVisible('.aviso.alert.alert-danger', 5000);
-                var alertText = browser.element('.aviso.alert.alert-danger').getText();
+                $('.aviso.alert.alert-danger').waitForDisplayed(5000);
+                var alertText = browser.$('.aviso.alert.alert-danger').getText();
                 var msgErrors = [
                     error_email, 
                     error_password, 
