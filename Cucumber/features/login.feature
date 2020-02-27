@@ -20,4 +20,4 @@ Scenario: Login succesfull
     When I open the login screen
     And I fill with holmangarcia@uniandes.edu.co and 123456789
     And I try to login
-    Then I expect to have an account
+    Then I expect to be logged in
