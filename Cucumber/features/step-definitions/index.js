@@ -54,10 +54,10 @@ defineSupportCode(({Given, When, Then}) => {
 		expect(alertText).to.include(error);
 	});
 	
-	Then('I expect to have an account', () => {
-		browser.waitForVisible("#cuenta", 10000);
-		var account = browser.isVisible('#cuenta');
-		expect(account).to.exist;
+	Then('I expect to be logged in', () => {
+		var header = browser.element('.navbar');
+		var alertText = header.element('.usrImage'); 
+		expect(alertText).to.not.be.null;
 	});
 	
 	When(/^I fill with my (.*), (.*), (.*), selected a (.*), fill my (.*) and accept the (.*) and conditions$/, 
