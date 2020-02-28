@@ -88,7 +88,7 @@ defineSupportCode(({Given, When, Then}) => {
 	When('I open the register screen', () => {
 		let loginButton = $('button=Ingresar');
 		if(loginButton.isEnabled() && browser.$('button=Ingresar').waitForDisplayed(5000)){
-			browser.click('button=Ingresar');
+			$('button=Ingresar').click();
 		}
 	});
 	
