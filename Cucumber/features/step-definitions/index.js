@@ -56,13 +56,8 @@ defineSupportCode(({Given, When, Then}) => {
 		mailInput.keys(email);
 	});
 	
-	When(/^I select studies (.*), is MBA (.*) and (.*)$/  , (university, isMBA, program) => {
+	When(/^I select studies, is MBA (.*) and (.*)$/  , (university, isMBA, program) => {
 		var cajaSignUp = browser.$('.cajaSignUp');
-		
-		$('select[name="idUniversidad"]').selectByIndex(2);
-		
-		var selectUniversidad = cajaSignUp.$('select[name="idUniversidad"]');
-		selectUniversidad.selectByVisibleText("Universidad de los Andes");
 		
 		if(isMBA) {
 			var isMBAElement = cajaSignUp.$('input[class="jsx-527058112"]');
