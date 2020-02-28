@@ -65,7 +65,7 @@ defineSupportCode(({Given, When, Then}) => {
 		}
 		
 		var selectPrograma = cajaSignUp.$('select[name="idPrograma"]');
-		selectPrograma.elementClick(program);
+		selectPrograma.selectValue(program);
 	});
 
 	When(/^I set the password (.*) and sign up$/, (password) => {
@@ -92,9 +92,9 @@ defineSupportCode(({Given, When, Then}) => {
 	});
 	
 	Then('I expect to see {string}', error => {
-		$('.aviso.alert.alert-danger').waitForDisplayed(5000);
+		$('.aviso.alert.alert-danger').waitForDisplayed(10000);
 		var alertText = browser.$('.aviso.alert.alert-danger').getText();
-		expect(alertText).to.include(error);
+		expect(alertText).to.include(error);v
 	});
 	
 	Then('I expect to be logged in', () => {
