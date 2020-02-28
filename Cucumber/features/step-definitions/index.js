@@ -65,7 +65,7 @@ defineSupportCode(({Given, When, Then}) => {
 		}
 		
 		var selectPrograma = cajaSignUp.$('select[name="idPrograma"]');
-		selectPrograma.selectByVisibleText(program);
+		selectPrograma.elementClick(program);
 	});
 
 	When(/^I set the password (.*) and sign up$/, (password) => {
