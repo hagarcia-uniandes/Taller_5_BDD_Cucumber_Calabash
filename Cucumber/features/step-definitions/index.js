@@ -56,7 +56,7 @@ defineSupportCode(({Given, When, Then}) => {
 		mailInput.keys(email);
 	});
 	
-	When(/^I select studies, is MBA (.*) and (.*)$/  , (university, isMBA, program) => {
+	When(/^I select studies, is MBA (.*) and (.*)$/  , (isMBA, program) => {
 		var cajaSignUp = browser.$('.cajaSignUp');
 		
 		if(isMBA) {
