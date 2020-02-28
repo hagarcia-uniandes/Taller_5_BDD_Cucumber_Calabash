@@ -87,7 +87,7 @@ defineSupportCode(({Given, When, Then}) => {
 	
 	When('I open the register screen', () => {
 		let loginButton = $('button=Ingresar');
-		if(loginButton.isEnabled() && browser.isVisible('button=Ingresar')){
+		if(loginButton.isEnabled() && browser.$('button=Ingresar').waitForDisplayed(5000)){
 			browser.click('button=Ingresar');
 		}
 	});
@@ -95,8 +95,6 @@ defineSupportCode(({Given, When, Then}) => {
 	Then('I expect to not be able to login', () => {
 		$('.aviso.alert.alert-danger').waitForDisplayed(5000);
 	});
-	
-	
 	
 	Then('I expect to see {string}', error => {
 		$('.aviso.alert.alert-danger').waitForDisplayed(5000);
