@@ -2,7 +2,7 @@ Feature: Register a new user into losestudiantes
     As a user I want to register an account within losestudiantes website
 
 Scenario Outline: Register failed
-    Given I go to los estudiantes home screen
+    Given I go to losestudiantes home screen
 	When I open the register screen
 	And I fill basic information <name>, <lastName> and <email>
 	And I select studies <university>, is MBA <isMBA> and <program>
@@ -24,7 +24,7 @@ Scenario Outline: Register failed
 	
 
 Scenario Outline: Register success
-    Given I go to los estudiantes home screen
+    Given I go to losestudiantes home screen
 	When I open the register screen
 	And I fill basic information <name>, <lastName> and <email>
 	And I select studies <university>, is MBA <isMBA> and <program>
