@@ -10,17 +10,17 @@ Scenario Outline: Register failed
 	Then I expect to be on sign up
 
     Examples:
-	|      name       |  lastName           | email                        | isMBA	 |program                                                   |password  |
-	|				  |    Hernandez        | titarufohernandez@gmail.com  | true	 |Maestría en Arquitecturas de Tecnologías de la Información|Pass1234  |
-	|      Titarufo   |                     | titarufohernandez@gmail.com  | true	 |Maestría en Arquitecturas de Tecnologías de la Información|Pass1234  |
-	|      Titarufo   |    Hernandez        |         		               | true	 |Maestría en Arquitecturas de Tecnologías de la Información|Pass1234  |
-	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | true	 | 				                                            |Pass1234  |
-	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | true	 |Maestría en Arquitecturas de Tecnologías de la Información|		   |
-	|                 |    Hernandez        | titarufohernandez@gmail.com  | false	 |Maestría en Arquitecturas de Tecnologías de la Información|Pass1234  |
-	|      Titarufo   |                     | titarufohernandez@gmail.com  | false	 |Maestría en Arquitecturas de Tecnologías de la Información|Pass1234  |
-	|      Titarufo   |    Hernandez        |         		               | false	 |Maestría en Arquitecturas de Tecnologías de la Información|Pass1234  |
-	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | false	 | 				                                            |Pass1234  |
-	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | false	 |Maestría en Arquitecturas de Tecnologías de la Información|		   |
+	|      name       |  lastName           | email                        | isMBA	 |program |password  |
+	|				  |    Hernandez        | titarufohernandez@gmail.com  | true	 |   12   |Pass1234  |
+	|      Titarufo   |                     | titarufohernandez@gmail.com  | true	 |   12   |Pass1234  |
+	|      Titarufo   |    Hernandez        |         		               | true	 |   12   |Pass1234  |
+	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | true	 |        |Pass1234  |
+	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | true	 |   12   |		     |
+	|                 |    Hernandez        | titarufohernandez@gmail.com  | false	 |   12   |Pass1234  |
+	|      Titarufo   |                     | titarufohernandez@gmail.com  | false	 |   12   |Pass1234  |
+	|      Titarufo   |    Hernandez        |         		               | false	 |   12   |Pass1234  |
+	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | false	 |        |Pass1234  |
+	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com  | false	 |   12   |		     |
 	
 
 Scenario Outline: Register success
@@ -32,6 +32,6 @@ Scenario Outline: Register success
 	Then I expect to be logged in
 	
 	Examples:
-	|      name       |  lastName           | email                         | isMBA |program                                                   |password | 
-	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com   | true  |Maestría en Arquitecturas de Tecnologías de la Información|Pass1234 |
-	|      Alber      |    Tefeo            | albertefeo@gmail.com          | false |Historia													 |Pass1234 |
+	|      name       |  lastName           | email                         | isMBA |program |password | 
+	|      Titarufo   |    Hernandez        | titarufohernandez@gmail.com   | true  |   12   |Pass1234 |
+	|      Alber      |    Tefeo            | albertefeo@gmail.com          | false |   12   |Pass1234 |
