@@ -28,15 +28,6 @@ defineSupportCode(({Given, When, Then}) => {
 		passwordInput.setValue('123467891');
 	});
 	
-	When('I try to login', () => {
-		var cajaLogIn = $('.cajaLogIn');
-		cajaLogIn.$('button=Ingresar').click();
-	});
-	
-	Then('I expect to not be able to login', () => {
-		$('.aviso.alert.alert-danger').waitForDisplayed(5000);
-	});
-	
 	When(/^I fill with (.*) and (.*)$/ , (email, password) => {
 		var cajaLogIn = $('.cajaLogIn');
 		var mailInput = cajaLogIn.$('input[name="correo"]');
@@ -47,6 +38,65 @@ defineSupportCode(({Given, When, Then}) => {
 		passwordInput.click();
 		passwordInput.keys(password)
 	});
+	
+	When(/^I fill basic information (.*), (.*) and (.*)$/  , (name, lastName, email) => {
+		var cajaSignUp = browser.$('.cajaSignUp');
+		
+		var nameInput = cajaSignUp.$('input[name="nombre"]');
+		nameInput.click();
+		nameInput.keys(name);
+		
+		var lastNameInput = cajaSignUp.$('input[name="apellido"]');
+		lastNameInput.click();
+		lastNameInput.keys(lastName);
+		
+		browser.pause(1000);
+		var mailInput = cajaSignUp.$('input[name="correo"]');
+		mailInput.click();
+		mailInput.keys(email);
+	});
+	
+	When(/^I select studies (.*), is MBA (.*) and (.*)$/  , (university, isMBA, program) => {
+		var cajaSignUp = browser.$('.cajaSignUp');
+		
+		$('select[name="idUniversidad"]').selectByIndex(2);
+		
+		var selectUniversidad = cajaSignUp.$('select[name="idUniversidad"]');
+		selectUniversidad.selectByVisibleText("Universidad de los Andes");
+		
+		if(isMBA) {
+			var isMBAElement = cajaSignUp.$('input[class="jsx-527058112"]');
+			isMBAElement.click();
+		}
+		
+		var selectPrograma = cajaSignUp.$('select[name="idPrograma"]');
+		selectPrograma.selectByVisibleText(program);
+	});
+
+	When(/^I set the password (.*) and sign up$/, (password) => {
+		var cajaSignUp = browser.$('.cajaSignUp');
+		var passwordInput = cajaSignUp.$('input[name="password"]');
+		passwordInput.click();
+		passwordInput.keys(password);
+	});
+	
+	When('I try to login', () => {
+		var cajaLogIn = $('.cajaLogIn');
+		cajaLogIn.$('button=Ingresar').click();
+	});
+	
+	When('I open the register screen', () => {
+		let loginButton = $('button=Ingresar');
+		if(loginButton.isEnabled() && browser.isVisible('button=Ingresar')){
+			browser.click('button=Ingresar');
+		}
+	});
+	
+	Then('I expect to not be able to login', () => {
+		$('.aviso.alert.alert-danger').waitForDisplayed(5000);
+	});
+	
+	
 	
 	Then('I expect to see {string}', error => {
 		$('.aviso.alert.alert-danger').waitForDisplayed(5000);
@@ -59,49 +109,11 @@ defineSupportCode(({Given, When, Then}) => {
 		var alertText = header.$('.usrImage'); 
 		expect(alertText).to.not.be.null;
 	});
+  
+	Then('I expect to be on sign up', () => {
+		var signUpScreen = browser.isVisible('.cajaSignUp');
+		expect(signUpScreen).to.be.true;
+	});
 	
-	When(/^I fill with my (.*), (.*), (.*), selected a (.*), fill my (.*) and accept the (.*) and conditions$/, 
-        (name, lastname, email, department, password, terms) => {
-            var cajaSignUp = browser.$('.cajaSignUp');
-            cajaSignUp.$('input[name="nombre"]').click().keys(name);
-            cajaSignUp.$('input[name="apellido"]').click().keys(lastname);
-            cajaSignUp.$('input[name="correo"]').click().keys(email);
-            cajaSignUp.$('input[name="password"]').click().keys(password);
-            if(department !== "")
-                cajaSignUp.$('select[name="idDepartamento"]').selectByValue('3');
-            if(terms !== "")
-                cajaSignUp.$('input[name="acepta"]').click();
-    });
-
-    When('I try to register', () => {
-        var cajaSignUp = browser.$('.cajaSignUp');
-        cajaSignUp.$('button=Registrarse').click();
-    });
-
-    Then(/^I expect do not see the errors : (.*), (.*) and (.*)$/, 
-        (error_email, error_password, error_terms) => {
-            if(error_email !== "" && error_password !== "" && error_terms !== "") {
-                $('.aviso.alert.alert-danger').waitForDisplayed(5000);
-                var alertText = browser.$('.aviso.alert.alert-danger').getText();
-                var msgErrors = [
-                    error_email, 
-                    error_password, 
-                    error_terms
-                ];
-                //Saber si alguno de los siguientes errores es mostrando...
-                var showError = false;
-                var numBerError = 0;
-                for(var i = 0; i < msgErrors.length; i++) {
-                    if(msgErrors[i] === alertText) {
-                        showError = true;
-                        numBerError = i;
-                        break;
-                    }
-                }
-                if(showError) {
-                    expect(alertText).to.include(msgErrors[numBerError]);
-                }
-            }
-    });
 });
 
