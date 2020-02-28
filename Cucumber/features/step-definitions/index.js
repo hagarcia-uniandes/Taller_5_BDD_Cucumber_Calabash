@@ -104,7 +104,7 @@ defineSupportCode(({Given, When, Then}) => {
 	});
   
 	Then('I expect to be on sign up', () => {
-		var signUpScreen = browser.isVisible('.cajaSignUp');
+		var signUpScreen = browser.$('.cajaSignUp').isDisplayed();
 		expect(signUpScreen).to.be.true;
 	});
 	
